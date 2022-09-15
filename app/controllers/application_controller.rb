@@ -3,7 +3,7 @@ class ApplicationController < Sinatra::Base
   
   # read
   
-  get "/pokemons" do
+  get "/games" do
     pokemons = Pokemon.all.order(:name)
     pokemons.to_json(include: :owner)
   end
@@ -13,7 +13,7 @@ class ApplicationController < Sinatra::Base
 
   
 
-  patch '/pokemons/:id' do
+  patch '/games/:id' do
     pokemon = Pokemon.find(params[:id])
     pokemon.update(
       claimed: params[:claimed]
